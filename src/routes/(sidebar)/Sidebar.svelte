@@ -49,7 +49,18 @@
 	});
 
 	let posts = [
-		{ name: 'Dashboard', icon: ChartPieOutline, href: '/dashboard' },
+		{ name: 'Dashboard', icon: ChartPieOutline, href: '/dashboard' , show: true},
+		{
+			name: 'Settings',
+			icon: CogOutline,
+			href: '/settings',
+			children: {
+				Configurations: '/settings/connection-configs'
+			},
+			show: true
+		},
+
+
 		{
 			name: 'Layouts',
 			icon: TableColumnSolid,
@@ -66,7 +77,7 @@
 				Users: '/crud/users'
 			}
 		},
-		{ name: 'Settings', icon: CogOutline, href: '/settings' },
+
 		{
 			name: 'Pages',
 			icon: FileChartBarSolid,
@@ -120,6 +131,13 @@
 			icon: LifeSaverSolid
 		}
 	];
+	let isProd = true;
+	if(isProd){
+		posts = posts.filter(menuItem => menuItem.show===true);
+		links = [];
+	}
+
+
 	let dropdowns = Object.fromEntries(Object.keys(posts).map((x) => [x, false]));
 </script>
 
@@ -143,21 +161,11 @@
 							<svelte:component this={icon} slot="icon" class={iconClass} />
 
 							{#each Object.entries(children) as [title, href]}
-								<SidebarItem
-									label={title}
-									{href}
-									spanClass="ml-9"
-									class={itemClass}
-								/>
+								<SidebarItem label={title} {href} spanClass="ml-9" class={itemClass} />
 							{/each}
 						</SidebarDropdownWrapper>
 					{:else}
-						<SidebarItem
-							label={name}
-							{href}
-							spanClass="ml-3"
-							class={itemClass}
-						>
+						<SidebarItem label={name} {href} spanClass="ml-3" class={itemClass}>
 							<svelte:component this={icon} slot="icon" class={iconClass} />
 						</SidebarItem>
 					{/if}
@@ -165,13 +173,7 @@
 			</SidebarGroup>
 			<SidebarGroup ulClass={groupClass}>
 				{#each links as { label, href, icon } (label)}
-					<SidebarItem
-						{label}
-						{href}
-						spanClass="ml-3"
-						class={itemClass}
-						target="_blank"
-					>
+					<SidebarItem {label} {href} spanClass="ml-3" class={itemClass} target="_blank">
 						<svelte:component this={icon} slot="icon" class={iconClass} />
 					</SidebarItem>
 				{/each}

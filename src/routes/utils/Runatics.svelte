@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id={analyticsId}"></script>
+  <meta name="keywords" content="Nexolis, Lab Integration and Configuration Manager">
 </svelte:head>
 {#if !analyticsId}
   <h2>You need to provide your Google Analytics ID, "ANALYTICS_ID", in .env file.</h2>

@@ -29,14 +29,14 @@
 	/>
 	<NavBrand href="/" class={list ? 'w-40' : 'lg:w-60'}>
 		<img
-			src="/images/flowbite-svelte-icon-logo.svg"
+			src="/images/rooster.png"
 			class="me-2.5 h-6 sm:h-8"
-			alt="Flowbite Logo"
+			alt="Nexolis Connector Logo"
 		/>
 		<span
 			class="ml-px self-center whitespace-nowrap text-xl font-semibold dark:text-white sm:text-2xl"
 		>
-			Flowbite
+			Nexolis
 		</span>
 	</NavBrand>
 	<div class="hidden lg:block lg:ps-3">
